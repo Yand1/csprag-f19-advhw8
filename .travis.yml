@@ -7,4 +7,4 @@ install:
   - pip install colorama
 script:
   - coverage run -m unittest
-  - coverage report --omit=/home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/colorama
+  - coverage report --omit=/home/travis/virtualenv/python3.5.6/lib/python3.5/site-packages/colorama/*
