@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import operator
+import readline
+from colorama import Fore, Style
 
 operators = {
     '+': operator.add,
@@ -19,6 +21,15 @@ def help():
 def calculate(arg):
     stack = list()
     for token in arg.split():
+        color = Fore.WHITE
+        if (token == '+' or token == '-'):
+            color = Fore.CYAN
+        elif (token == '*' or token == '/'):
+            color = Fore.MAGENTA
+        elif (token == '^'):
+            color = Fore.YELLOW
+        print(color + token + Style.RESET_ALL + ' ', end=' ')
+
         try:
             value = int(token)
             stack.append(value)
@@ -35,13 +46,22 @@ def calculate(arg):
     if len(stack) != 1:
         raise TypeError('malformed input')
 
-    print(stack[0])
+    # print(stack[0])
 
     return stack.pop()    
 
 def main():
     while True:
-        calculate(input("rpn calc> "))
+        result = calculate(input("rpn calc> "))
+        
+        if result >= 0:
+            print(Fore.GREEN)
+        else:
+            print(Fore.RED)
+
+        print("Result: ", result)
+
+        print(Style.RESET_ALL)
 
 if __name__ == '__main__':
     main()
