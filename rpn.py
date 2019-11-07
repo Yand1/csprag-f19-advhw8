@@ -10,6 +10,12 @@ operators = {
     '^': operator.pow,
 }
 
+def help():
+    print("This is a reverse polish notation calculator. It operates by applying" 
+          "the operation specified on the two most recent elements, and saving the" 
+          "result. Example: 5 6 + becomes 5 + 6, and 11 gets saved to the calculator.")
+           
+
 def calculate(arg):
     stack = list()
     for token in arg.split():
